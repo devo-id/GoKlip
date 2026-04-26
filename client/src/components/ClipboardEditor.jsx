@@ -15,7 +15,7 @@ const ClipboardEditor = ({ roomId }) => {
         className="flex-1 bg-black text-white p-4 font-mono text-sm outline-none resize-none"
       />
       <div className="px-4 py-2 border-t border-zinc-800 text-xs text-zinc-500">
-        Clipboard Editor - Type and share your clipboard content in real-time!
+        {content.length} characters{" "}
       </div>
     </div>
   );
