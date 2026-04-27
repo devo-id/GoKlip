@@ -14,6 +14,7 @@ const LandingPage = () => {
 
   const handleJoin = (e) => {
     e.preventDefault();
+    if (!joinId.trim()) return;
     if (joinId.trim()) {
       navigate(`/${joinId.trim()}`);
     }
