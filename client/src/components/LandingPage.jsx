@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, Shield, Zap, FileText } from "lucide-react";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
+import { createClipboard } from "../services/api";
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const [joinId, setJoinId] = useState("");
 
-  const handleCreate = () => {
-    navigate("/demo");
+  const handleCreate = async () => {
+    const data = await createClipboard();
+    navigate(`/${data.customId}`);
   };
 
   const handleJoin = (e) => {

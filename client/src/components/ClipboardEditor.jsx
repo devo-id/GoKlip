@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createClipboard } from "../services/api";
 
 const ClipboardEditor = ({ roomId }) => {
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    async function load() {
+      const data = await createClipboard(roomId);
+      setContent(data.content || "");
+    }
+
+    load();
+  }, [roomId]);
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
