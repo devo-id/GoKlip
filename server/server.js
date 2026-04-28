@@ -40,10 +40,10 @@ app.post("/api/clipboards", async (req, res) => {
     customId = generateId();
   }
 
-  let clipboard = await Clipboard.findOne({ customId });
-
-  if (!clipboard) {
+  try {
     clipboard = await Clipboard.create({ customId });
+  } catch (err) {
+    clipboard = await Clipboard.findOne({ customId });
   }
 
   res.json({
